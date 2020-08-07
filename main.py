@@ -9,14 +9,13 @@ app=Flask(__name__)
 def index():
     return 'Usage;\n<Operation>?X=sys.args[0].split(',')\n'
 
-@app.route('/median')
-def median():
+@app.route('/mean')
+@app.route('/avg')
+@app.route('/average') 
+def mean():
 	Y =map(float, request.args.get('X').split(','))
-	
-	a= stat.median(Y) 
-	return "%s \n" %a
-
-
+	b= stat.mean(Y) 
+	return "%s\n" %b
 
 if __name__=='__main__':
         app.debug=True
