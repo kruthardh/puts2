@@ -33,6 +33,16 @@ def min():
 			min_ele=Y[i] 
 	return "%s \n" %min_ele
 
+
+@app.route('/max')
+def max():
+	Y =(request.args.get('X').split(','))
+	max_ele=Y[0]
+	for i in range(1,len(Y)): 
+		if Y[i]>max_ele: 
+			max_ele=Y[i] 
+	return "%s \n" %max_ele
+
 if __name__=='__main__':
         app.debug=True
         app.run()
