@@ -35,7 +35,7 @@ def min():
 
 @app.route('/max')
 def max():
-	Y =(request.args.get('X').split(','))
+	Y =list(request.args.get('X').split(','))
 	max_ele=Y[0]
 	for i in range(1,len(Y)): 
 		if Y[i]>max_ele: 
