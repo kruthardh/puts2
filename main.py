@@ -21,9 +21,17 @@ def mean():
 @app.route('/median')
 def median():
 	Y =map(float, request.args.get('X').split(','))
-	
 	a= stat.median(Y) 
 	return "%s \n" %a
+
+@app.route('/min')
+def min():
+	Y =(request.args.get('X').split(','))
+	min_ele=Y[0]
+	for i in range(1,len(Y)): 
+		if Y[i]<min_ele: 
+			min_ele=Y[i] 
+	return "%s \n" %min_ele
 
 if __name__=='__main__':
         app.debug=True
