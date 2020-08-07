@@ -13,12 +13,14 @@ main_mean    = []
 main_avg     = []
 main_average = []
 main_median  = []
+main_max     = []
 main_min     = []
 
 test_mean    = []
 test_avg     = []
 test_average = []
 test_median  = []
+test_max     = []
 test_min     = []
 
 
@@ -27,6 +29,9 @@ test_avg.append(stat.mean(X))
 test_average.append(stat.mean(X))
 test_median.append(stat.median(X))
 test_min.append(min(X))
+test_max.append(max(X))
+
+
 
 
 r1 = requests.get('http://127.0.0.1:5000/mean?X=1,1.2,3,-5,0,100')
@@ -50,6 +55,10 @@ r5 = requests.get('http://127.0.0.1:5000/min?X=1,1.2,3,-5,0,100')
 data3 = r5.json()
 main_min.append(data3)
 
+r6 = requests.get('http://127.0.0.1:5000/max?X=1,1.2,-5,0,100')
+data4 = r6.json()
+main_max.append(data4)
+
 
 if main_mean == test_mean:
 	print ("Mean OK")
@@ -71,14 +80,17 @@ if main_median == test_median:
 else:
 	print ("Median not OK")
 
-
-if main_median == test_median:
-	print ("Median OK")
-else:
-	print ("Median not OK")
-
 if main_min == test_min:
 	print ("Min OK")
 else:
 	print ("Min not OK")
+
+if main_max == test_max:
+	print ("Max OK")
+else:
+	print ("Max not OK")
+
+
+
+print ("testing done")
 
