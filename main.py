@@ -1,19 +1,24 @@
 from flask import Flask, request
+import statistics as stat
+import sys
 
-app = Flask(__name__)
+app=Flask(__name__)
+
 
 @app.route('/')
 def index():
-    return 'Usage;\n<Operation>?A=<Value1>&B=<Value2>\n'
+    return 'Usage;\n<Operation>?X=sys.args[0].split(',')\n'
+
+@app.route('/mean')
+@app.route('/avg')
+@app.route('/average') 
+def mean():
+	Y =map(float, request.args.get('X').split(','))
+	b= stat.mean(Y) 
+	return "%s\n" %b
 
 
-@app.route('/add')
-def addition():
-    value1=request.args.get('A',default = 0, type = int)
-    value2=request.args.get('B',default = 0, type = int)
-    result=value1+value2
-    return '%d \n' % result
 
-
-if __name__ == "__main__":
-    app.run()
+if __name__=='__main__':
+        app.debug=True
+        app.run()
