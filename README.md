@@ -1,1 +1,1 @@
-# Base plate for lab 2
+Online calculator focusing on API definitions, implementation, testing and version tracking.
